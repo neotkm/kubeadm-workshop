@@ -130,7 +130,7 @@ kubectl apply -f https://raw.githubusercontent.com/neotkm/kubeadm-workshop/main/
 
 ### Изменяем ConfigMap CoreDNS
 ```
-kubectl apply -https://raw.githubusercontent.com/neotkm/kubeadm-workshop/main/coredns-config-map.yaml
+kubectl apply -f https://raw.githubusercontent.com/neotkm/kubeadm-workshop/main/coredns-config-map.yaml
 ```
 
 #### Находим поды CoreDNS и удаляем их, чтобы они получили новый ConfigMap
@@ -180,7 +180,7 @@ kubectl apply -f https://raw.githubusercontent.com/neotkm/kubeadm-workshop/main/
 
 ### Развернем демо приложение, для демонстрации работы ingress controller
 ```
-kubectl apply -https://raw.githubusercontent.com/neotkm/kubeadm-workshop/main/demo-ingress.yaml
+kubectl apply -f https://raw.githubusercontent.com/neotkm/kubeadm-workshop/main/demo-ingress.yaml
 ```
 #### Проверим работу приложения и ingress
 ```
