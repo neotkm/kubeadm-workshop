@@ -1,0 +1,30 @@
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: statefulset-demo
+  labels:
+    app: statefulset-demo
+  namespace: statefulset-demo
+spec:
+  serviceName: statefulset-demo
+  replicas: 7
+  updateStrategy:
+    type: RollingUpdate
+    #rollingUpdate:
+       #partition: 2
+    #type: OnDelete
+  selector:
+    matchLabels:
+      app: statefulset-demo
+  template:
+    metadata:
+      labels:
+        app: statefulset-demo
+    spec:
+      containers:
+      - name: statefulset-demo
+        image: neotkm/pod-healthcheck:v0.04
+       #imagePullPolicy: IfNotPresent
+
+      #restartPolicy: Always

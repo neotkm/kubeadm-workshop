@@ -1,0 +1,30 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deployment-demo
+  labels:
+    app: deployment-demo
+  namespace: deployment-demo
+spec:
+  replicas: 5
+  strategy:
+    type: Recreate
+    #type: RollingUpdates
+    #rollingUpdate:
+      #maxSurge: 25%
+      #maxUnavailable: 25%
+  selector:
+    matchLabels:
+      app: deployment-demo
+  template:
+    metadata:
+      labels:
+        app: deployment-demo
+    spec:
+      containers:
+      - name: deployment-demo
+        image: neotkm/pod-healthcheck:v0.04
+        imagePullPolicy: IfNotPresent
+
+      #restartPolicy: Always

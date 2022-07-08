@@ -1,0 +1,29 @@
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: job-demo
+  labels:
+      app: job-demo
+  namespace: job-demo
+spec:
+  completions: 5
+  parallelism: 2
+  backoffLimit: 15
+  #activeDeadlineSeconds: 100
+  #ttlSecondsAfterFinished: 100
+  ##failedJobsHistoryLimit: 10
+  ##successfulJobsHistoryLimit: 10
+  template:
+    metadata:
+      name: job-demo
+      labels:
+        app: job-demo
+    spec:
+      containers:
+      - name: job-demo
+        image: neotkm/pod-healthcheck:v0.04
+        command: ["sh"]
+        args: ["-c",  "ls -lh"]
+      restartPolicy: Never
+      #restartPolicy: OnFailure

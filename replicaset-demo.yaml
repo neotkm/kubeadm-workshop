@@ -1,0 +1,25 @@
+---
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: replicaset-demo
+  labels:
+    app: replicaset-demo
+  namespace: replicaset-demo
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: replicaset-demo
+  template:
+    metadata:
+      labels:
+        app: replicaset-demo
+    spec:
+      containers:
+      - name: replicaset-demo
+        image: neotkm/pod-healthcheck:v0.02
+        imagePullPolicy: IfNotPresent
+
+      restartPolicy: Always
+      #restartPolicy: Never
